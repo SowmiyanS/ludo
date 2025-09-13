@@ -49,8 +49,8 @@ div#BR {
 
 /* inner container */
 div#TL > div, div#TR > div, div#BL > div, div#BR > div {
-    width: 80px;
-    height: 80px;
+    width: 79px;
+    height: 79px;
 }
 /* inner border styles */
 div#TL > div {
@@ -68,8 +68,8 @@ div#BR > div {
 
 /* inner inner container */
 div#TL > div > div#p1Home, div#TR > div > div#p2Home, div#BL > div > div#p3Home, div#BR > div > div#p4Home {
-    width: 79px;
-    height: 79px;
+    width: 78px;
+    height: 78px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -253,32 +253,45 @@ div#bottomQuad {
     grid-template-columns: 20px 20px 20px;
 }
 
-/* Styles for special cells that are middle of each player's winning quadrant*/
-div.p2Cell {
-    background-color: var(--primary-p2);
-    border: 1px solid var(--secondary-p2);
-}
-div.p1Cell {
-    background-color: var(--primary-p1);
-    border: 1px solid var(--secondary-p1);
-}
-div.p4Cell {
-    background-color: var(--primary-p4);
-    border: 1px solid var(--secondary-p4);
-}
-div.p3Cell {
-    background-color: var(--primary-p3);
-    border: 1px solid var(--secondary-p3);
-}
-
 /* Individual cell styles */
 div.cell {
-    width: 18px;
-    height: 18px;
+    width: 18.5px;
+    height: 18.5px;
     border: 1px solid lightgrey;
     display: grid;
     grid-template-areas: "overlap-area";
 }
+
+/* Styles for special cells that are middle of each player's winning quadrant*/
+div.p2Cell, div > div.p2Cell {
+    width: 18.5px;
+    height: 18.5px;
+    display: grid;
+    background-color: var(--primary-p2);
+    border: 1px solid var(--secondary-p2);
+}
+div.p1Cell, div > div.p1Cell {
+    width: 18.5px;
+    height: 18.5px;
+    display: grid;
+    background-color: var(--primary-p1);
+    border: 1px solid var(--secondary-p1);
+}
+div.p4Cell, div > div.p4Cell {
+    width: 18.5px;
+    height: 18.5px;
+    display: grid;
+    background-color: var(--primary-p4);
+    border: 1px solid var(--secondary-p4);
+}
+div.p3Cell, div > div.p3Cell {
+    width: 18.5px;
+    height: 18.5px;
+    display: grid;
+    background-color: var(--primary-p3);
+    border: 1px solid var(--secondary-p3);
+}
+
 
 /* Styles for players */
 div.p1Coin {

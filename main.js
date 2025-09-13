@@ -218,7 +218,7 @@ class Player {
                     resolve();
                 }, "1100");
             }
-            else if(this.animIndex[index] == this.anim.length - 1) {
+            else if(this.animIndex[index] >= this.anim.length - 1) {
                 // reached the end
                 // play animation
                 if(this.animIndex[index] == this.anim.length - 1) {
@@ -880,9 +880,9 @@ function isSafeCell(cell) {
     for(let i = 0;i < 4;i++) {
         posiblts.push("p"+(i+1)+"Cell");
     }
-    for(let i = 0;i < 4;i++) {
-        posiblts.push("p"+(i+1)+"Arw");
-    }
+    //for(let i = 0;i < 4;i++) {
+    //    posiblts.push("p"+(i+1)+"Arw");
+    //}
     let isSafe = false;
     cell.classList.forEach((cl) => {
         for(let i = 0;i < 4;i++) {
@@ -1084,6 +1084,11 @@ function reOrderCoins() {
             // Update the reOrdered Value
             reOrdered[cntPlrIdx] = true;
         }
+        else {
+            // since the coins are limited
+            console.log("no more coins in same cell so set reOrderd to true");
+            reOrdered[cntPlrIdx] = true;
+        }
     }
 }
 
@@ -1226,7 +1231,7 @@ async function mock_game() {
     // Move the player 1
     //await move_plr_n_cn_x(0, 5, 0);
     //checkPosition(currentPlayer.coins[0]);
-    //for(let l = 0;l < 4;l++) {
+    //for(let l = 0;l < 2;l++) {
     //    for(let j = 0;j < 4;j++) {
     //        for(let i = 0;i < 10;i++) {
     //            await move_plr_n_cn_x(l, 5, j);
@@ -1257,25 +1262,25 @@ async function mock_game() {
     //    checkPosition(currentPlayer.coins[3]);
     //}, "2700");
     // TEST THE REORDER PLAYER COINS
-    await move_plr_n_cn_x(0, 5, 0);
-    await move_plr_n_cn_x(0, 5, 1);
-    await move_plr_n_cn_x(0, 5, 2);
-    await move_plr_n_cn_x(0, 5, 3);
-    await move_plr_n_cn_x(2, 5, 3);
-    await move_plr_n_cn_x(2, 5, 3);
-    await move_plr_n_cn_x(2, 5, 3);
-    await move_plr_n_cn_x(2, 0, 3);
-    isRolledOnce[0] = false;
-    currentPlayer = player1;
-    reOrderCoins();
-    reOrdered[0] = "false";
+    //await move_plr_n_cn_x(0, 5, 0);
+    //await move_plr_n_cn_x(0, 5, 1);
+    //await move_plr_n_cn_x(0, 5, 2);
+    //await move_plr_n_cn_x(0, 5, 3);
+    //await move_plr_n_cn_x(2, 5, 3);
+    //await move_plr_n_cn_x(2, 5, 3);
+    //await move_plr_n_cn_x(2, 5, 3);
+    //await move_plr_n_cn_x(2, 0, 3);
+    //isRolledOnce[0] = false;
+    //currentPlayer = player1;
+    //reOrderCoins();
+    //reOrdered[0] = "false";
 }
 //move_plr_n_cn_x(0, 6, 0);
 //move_plr_n_cn_x(0, 6, 0);
 //move_plr_n_cn_x(0, 6, 0);
 //player1.move(player1.coins[1]);
 
-//mock_game();
+mock_game();
 
 cntDce = gtDce(cntPlrIdx);
 // highlight the current dice
@@ -1285,16 +1290,15 @@ function switchPlayer() {
     // before switching the player the check Position must be called
     // unhighlight previous dice
     let cntDce = gtDce(cntPlrIdx);
+    console.log("inside switch player");
     cntDce.classList.remove("hlgt");
     // find the next player
     let prevPlrIdx = cntPlrIdx;
     //console.log("setting current player to : ");
-    reOrdered[prevPlrIdx] = "false";
-    reOrderCoins();
 
     let nextPlrIdx;
     let isNxtPlrWon = true;
-    while(!isAllWon() && !isNxtPlrWon) {
+    while(isNxtPlrWon) {
         isNxtPlrWon = true;
         nextPlrIdx = (cntPlrIdx + 1) % 4;
         for(let i = 0;i < 4;i++) {
@@ -1305,13 +1309,26 @@ function switchPlayer() {
         }
         if(!isNxtPlrWon) {
             // we are good to switch to the next player
+            console.log("next player is not won");
+
+            cntPlrIdx = nextPlrIdx;
+            currentPlayer = players[nextPlrIdx];
+
             break;
         }
-        // otherwise we need to find a next player that is not won!
+        else {
+            // The next player is already won
+            // otherwise we need to find a next player that is not won!
+            console.log("next player is already won so find next to next player");
+            cntPlrIdx = nextPlrIdx;
+            currentPlayer = players[nextPlrIdx];
+        }
     }
+    for(let i = 0;i < 4;i++) {
+        reOrdered[i] = false;
+    }
+    reOrderCoins();
     //console.dir(currentPlayer);
-    cntPlrIdx = nextPlrIdx;
-    currentPlayer = players[nextPlrIdx];
     //console.log("Active Player changed to : "+(cntPlrIdx + 1));
     cntDce = gtDce(cntPlrIdx);
     // highlight the current dice
