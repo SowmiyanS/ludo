@@ -1,0 +1,440 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+/* global colors */
+:root {
+    --primary-p1: #32a852;
+    --secondary-p1: #1c8538;
+    --primary-p2: #fafa0c;
+    --secondary-p2: #eded2f;
+    --primary-p3: #fc1f0f;
+    --secondary-p3: #de281b;
+    --primary-p4: #3880fc;
+    --secondary-p4: #596d91;
+}
+/* center main with flex */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 100vh;
+}
+/* Setting the entire grid layout */
+main {
+    display: grid;
+    grid-template-columns: 120px 60px 120px;
+}
+
+/* main container */
+div#TL, div#TR, div#BL, div#BR {
+    width: 119px;
+    height: 119px;
+}
+/* main container border styles */
+div#TL {
+    border: 1px solid var(--secondary-p1);
+}
+div#TR {
+    border: 1px solid var(--secondary-p2);
+}
+div#BL {
+    border: 1px solid var(--secondary-p3);
+}
+div#BR {
+    border: 1px solid var(--secondary-p4);
+}
+
+/* inner container */
+div#TL > div, div#TR > div, div#BL > div, div#BR > div {
+    width: 80px;
+    height: 80px;
+}
+/* inner border styles */
+div#TL > div {
+    border: 20px solid var(--primary-p1);
+}
+div#TR > div {
+    border: 20px solid var(--primary-p2);
+}
+div#BL > div {
+    border: 20px solid var(--primary-p3);
+}
+div#BR > div {
+    border: 20px solid var(--primary-p4);
+}
+
+/* inner inner container */
+div#TL > div > div#p1Home, div#TR > div > div#p2Home, div#BL > div > div#p3Home, div#BR > div > div#p4Home {
+    width: 79px;
+    height: 79px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+/* inner inner border styles */
+div#TL > div > div#p1Home {
+    border: 1px solid var(--secondary-p1);
+}
+div#TR > div > div#p2Home {
+    border: 1px solid var(--secondary-p2);
+}
+div#BL > div > div#p3Home {
+    border: 1px solid var(--secondary-p3);
+}
+div#BR > div > div#p4Home {
+    border: 1px solid var(--secondary-p4);
+}
+
+/* Home Style for all players */
+div#TL > div > div#p1Home > div, div#TR > div > div#p2Home > div, div#BL > div > div#p3Home > div, div#BR > div > div#p4Home > div {
+    align-self: center;
+    justify-self: center;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+/* Bases Styles for each players */
+div#TL > div > div#p1Home > div {
+    background-color: var(--primary-p1);
+    border: 1px solid var(--secondary-p1);
+}
+div#TR > div > div#p2Home > div {
+    background-color: var(--primary-p2);
+    border: 1px solid var(--secondary-p2);
+}
+div#BL > div > div#p3Home > div {
+    background-color: var(--primary-p3);
+    border: 1px solid var(--secondary-p3);
+}
+div#BR > div > div#p4Home > div {
+    background-color: var(--primary-p4);
+    border: 1px solid var(--secondary-p4);
+}
+
+/* styles for middle quadrant */
+div#finish {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+/* Styles for the winning cells for each player's middle quadrant */
+div#finish > div#two {
+    grid-column: 1 / 3;
+    border-top: 30px solid var(--primary-p2);
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 0px solid transparent;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+}
+div#finish > div#one {
+    grid-column: 1 / 2;
+    border-top: 30px solid transparent;
+    border-left: 30px solid var(--primary-p1);
+    border-right: 0px solid transparent;
+    border-bottom: 30px solid transparent;
+    position: absolute;
+    z-index: 0;
+}
+div#finish > div#four {
+    grid-column: 2 / 3;
+    border-top: 30px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 30px solid var(--primary-p4);
+    border-bottom: 30px solid transparent;
+    position: absolute;
+    left: 30px;
+    z-index: -1;
+}
+div#finish > div#three {
+    grid-column: 1 / 3;
+    border-top: 0px solid transparent;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid var(--primary-p3);
+    position: absolute;
+    top: 30px;
+    z-index: -1;
+}
+
+/* Styles for the winning DOM elements for each player's middle quadrant */
+div#finish > div > div.twoFnsh {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 0;
+    top: -28px;
+    left: -11px;
+    display: grid;
+}
+div#finish > div > div.oneFnsh {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: -30px;
+    display: grid;
+}
+div#finish > div > div.fourFnsh {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    left: 6px;
+    display: grid;
+}
+div#finish > div > div.threeFnsh {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: 7px;
+    left: -10px;
+    display: grid;
+}
+
+/* Style for safe cells */
+div.Safe:before {
+    content: "\2606";
+    position: absolute;
+    z-index: 0;
+    transform: translate(2.3px, 0px);
+}
+/* Styles for arrow cells */
+div.p2Arw:before {
+    content: "\2193";
+    position: absolute;
+    z-index: 0;
+    transform: translate(5px, 0px);
+}
+div.p1Arw:before {
+    content: "\2192";
+    position: absolute;
+    z-index: 0;
+    transform: translate(2.3px, 0px);
+}
+div.p4Arw:before {
+    content: "\2190";
+    position: absolute;
+    z-index: 0;
+    transform: translate(2.3px, 0px);
+}
+div.p3Arw:before {
+    content: "\2191";
+    position: absolute;
+    z-index: 0;
+    transform: translate(5px, 0px);
+}
+
+/* Styles for each quadrants so grid will work */
+div#topQuad {
+    display: grid;
+    grid-template-columns: 20px 20px 20px;
+}
+div#leftQuad {
+    display: grid;
+    grid-template-columns: repeat(6, 20px);
+}
+div#rightQuad {
+    display: grid;
+    grid-template-columns: repeat(6, 20px);
+}
+div#bottomQuad {
+    display: grid;
+    grid-template-columns: 20px 20px 20px;
+}
+
+/* Styles for special cells that are middle of each player's winning quadrant*/
+div.p2Cell {
+    background-color: var(--primary-p2);
+    border: 1px solid var(--secondary-p2);
+}
+div.p1Cell {
+    background-color: var(--primary-p1);
+    border: 1px solid var(--secondary-p1);
+}
+div.p4Cell {
+    background-color: var(--primary-p4);
+    border: 1px solid var(--secondary-p4);
+}
+div.p3Cell {
+    background-color: var(--primary-p3);
+    border: 1px solid var(--secondary-p3);
+}
+
+/* Individual cell styles */
+div.cell {
+    width: 18px;
+    height: 18px;
+    border: 1px solid lightgrey;
+    display: grid;
+    grid-template-areas: "overlap-area";
+}
+
+/* Styles for players */
+div.p1Coin {
+    background-image: url("images/p1.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    /*box-shadow: 1px 2px 6px lightgrey;*/
+    filter: drop-shadow(1px 1px 4px var(--secondary-p1));
+    z-index: 1;
+    grid-area: overlap-area;
+    align-self: center;
+    justify-content: center;
+}
+div.p2Coin {
+    background-image: url("images/p2.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    /*box-shadow: 1px 2px 6px lightgrey;*/
+    filter: drop-shadow(1px 1px 4px var(--secondary-p2));
+    z-index: 1;
+    grid-area: overlap-area;
+}
+div.p3Coin {
+    background-image: url("images/p3.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    /*box-shadow: 1px 2px 6px lightgrey;*/
+    filter: drop-shadow(1px 1px 4px var(--secondary-p3));
+    z-index: 1;
+    grid-area: overlap-area;
+}
+div.p4Coin {
+    background-image: url("images/p4.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    /*box-shadow: 1px 2px 6px lightgrey;*/
+    filter: drop-shadow(1px 1px 4px var(--secondary-p4));
+    z-index: 1;
+    grid-area: overlap-area;
+}
+
+/* styles for the dice itself */
+div#p1Dice > div, div#p2Dice > div , div#p3Dice > div, div#p4Dice > div {
+    width: 35px;
+    height: 35px;
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px lightgrey;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+}
+div#p1Dice > div#d1, div#p2Dice > div#d1 , div#p3Dice > div#d1, div#p4Dice > div#d1 {
+    display: grid;
+}
+div#p1Dice > div#d2, div#p2Dice > div#d2 , div#p3Dice > div#d2, div#p4Dice > div#d2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+div#p1Dice > div#d3, div#p2Dice > div#d3 , div#p3Dice > div#d3, div#p4Dice > div#d3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+div#p1Dice > div#d4, div#p2Dice > div#d4 , div#p3Dice > div#d4, div#p4Dice > div#d4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: space-evenly;
+}
+div#p1Dice > div#d5, div#p2Dice > div#d5 , div#p3Dice > div#d5, div#p4Dice > div#d5 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: space-evenly;
+}
+div#p1Dice > div#d6, div#p2Dice > div#d6 , div#p3Dice > div#d6, div#p4Dice > div#d6 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: space-evenly;
+}
+
+div.dice {
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    border-radius: 50%;
+    align-self: center;
+    justify-content: center;
+    justify-items: center;
+}
+/* Special styles applied to 5 dot dice since it will not align properly */
+div#p1Dice>div#d5>div:nth-child(1), div#p2Dice>div#d5>div:nth-child(1), div#p3Dice>div#d5>div:nth-child(1), div#p4Dice>div#d5>div:nth-child(1) {
+    order: 1;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+div#p1Dice>div#d5>div:nth-child(2), div#p2Dice>div#d5>div:nth-child(2), div#p3Dice>div#d5>div:nth-child(2), div#p4Dice>div#d5>div:nth-child(2) {
+    order: 2;
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+div#p1Dice>div#d5>div:nth-child(3), div#p2Dice>div#d5>div:nth-child(3), div#p3Dice>div#d5>div:nth-child(3), div#p4Dice>div#d5>div:nth-child(3) {
+    order: 3;
+    grid-column: 1/4;
+    grid-row: 2/3;
+}
+div#p1Dice>div#d5>div:nth-child(4), div#p2Dice>div#d5>div:nth-child(4), div#p3Dice>div#d5>div:nth-child(4), div#p4Dice>div#d5>div:nth-child(4) {
+    order: 4;
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+div#p1Dice>div#d5>div:nth-child(5), div#p2Dice>div#d5>div:nth-child(5), div#p3Dice>div#d5>div:nth-child(5), div#p4Dice>div#d5>div:nth-child(5) {
+    order: 5;
+    grid-column: 3/4;
+    grid-row: 3/4;
+}
+/* Style to align the dices for each player on top of their base */
+body>div {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.hlgt {
+    outline: 3px solid black;
+    border-radius: 5px;
+}
+
+/* Styles for the crown */
+#crown {
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow(2px 4px 6px lightgrey);
+}
+.crown1 {
+    width: 80px;
+    background-image: url("images/crown1.png");
+    transform: translate(-1px, 0px);
+}
+.crown2 {
+    width: 120px;
+    background-image: url("images/crown2.png");
+    transform: translate(-20px, 0px);
+}
+.crown3 {
+    width: 120px;
+    background-image: url("images/crown3.png");
+    transform: translate(-20px, 0px);
+}
+.crown4 {
+    width: 120px;
+    background-image: url("images/crown4.png");
+    transform: translate(-20px, 0px);
+}

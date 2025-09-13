@@ -1,0 +1,279 @@
+.tr {
+    transition: transform 1s ease-in;
+}
+.mr {
+    animation-name: move-right;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+.md {
+    animation-name: move-down;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+.mdr {
+    animation-name: move-down-right;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+.mdl {
+    animation-name: move-down-left;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+.ml {
+    animation-name: move-left;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+.mu {
+    animation-name: move-up;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+.mur {
+    animation-name: move-up-right;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+.mul {
+    animation-name: move-up-left;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards; 
+}
+@Keyframes move-right {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: 5px -3px;
+    }
+    50% {
+        translate: 10px -8px;
+    }
+    75% {
+        translate: 15ps -3px
+    }
+    100% {
+        translate: 20px 0px;
+    }
+}
+@Keyframes move-down {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: 3px 5px;
+    }
+    50% {
+        translate: 8px 10px;
+    }
+    75% {
+        translate: 3ps 15px
+    }
+    100% {
+        translate: 0px 20px;
+    }
+}
+@Keyframes move-down-right {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: 5px 5px;
+    }
+    50% {
+        translate: 10px 10px;
+    }
+    75% {
+        translate: 13ps 13px
+    }
+    100% {
+        translate: 20px 20px;
+    }
+}
+@Keyframes move-down-left {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: -5px 5px;
+    }
+    50% {
+        translate: -10px 10px;
+    }
+    75% {
+        translate: -13ps 13px
+    }
+    100% {
+        translate: -20px 20px;
+    }
+}
+@Keyframes move-left {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: -5px 3px;
+    }
+    50% {
+        translate: -10px 8px;
+    }
+    75% {
+        translate: -15ps 3px
+    }
+    100% {
+        translate: -20px 0px;
+    }
+}
+@Keyframes move-up {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: 3px -5px;
+    }
+    50% {
+        translate: 8px -10px;
+    }
+    75% {
+        translate: 3ps -15px
+    }
+    100% {
+        translate: 0px -20px;
+    }
+}
+@Keyframes move-up-right {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: 3px -5px;
+    }
+    50% {
+        translate: 10px -10px;
+    }
+    75% {
+        translate: 13ps -13px
+    }
+    100% {
+        translate: 20px -20px;
+    }
+}
+@Keyframes move-up-left {
+    0% {
+        translate: 0px 0px;
+    }
+    25% {
+        translate: -3px -5px;
+    }
+    50% {
+        translate: -10px -10px;
+    }
+    75% {
+        translate: -13ps -13px
+    }
+    100% {
+        translate: -20px -20px;
+    }
+}
+/* rotate animations */
+.rr {
+    animation-name: rotate-right;
+    animation-duration: 0.2s;
+}
+.rl {
+    animation-name: rotate-left;
+    animation-duration: 0.2s;
+}
+@Keyframes rotate-right {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(90deg);
+    }
+}
+@Keyframes rotate-left {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+/* Fade out animation */
+.fo {
+    animation-name: fade-out;
+    animation-duration: 0.2s;
+}
+@Keyframes fade-out {
+    0% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
+/* Fade out animation ends */
+
+/* Fade in animation */
+.fi {
+    animation-name: fade-in;
+    animation-duration: 0.2s;
+}
+@Keyframes fade-in {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+/* Fade out animation ends */
+
+/* Jump Up and Down Animation */
+.jmp {
+    animation-name: jump-up-and-down;
+    animation-duration: 1s;
+}
+@Keyframes jump-up-and-down {
+    0% {
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* fade in and out Animation */
+.fde {
+    animation-name: jump-in-and-out;
+    animation-duration: 1s;
+}
+@Keyframes jump-in-and-out {
+    0% {
+        opacity: 100%;
+    }
+    25% {
+        opacity: 20%;
+    }
+    50% {
+        opacity: 70%;
+    }
+    75% {
+        opacity: 10%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}

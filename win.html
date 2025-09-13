@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ludo Game</title>
+        <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+    </head>
+    <body>
+        <article>
+            <section>
+                <h1>Congratulations</h1>
+                <h1>For Winners</h1>
+                <h1><b>L</b><b>U</b><b>D</b><b>O</b>!</h1>
+                <ol id="list">
+                </ol>
+                <a onClick="restart()">
+                    <button>Restart - Play And Pass</button>
+                </a>
+                <a href="index.html">
+                    <button >Home</button>
+                </a>
+            </section>
+        </article>
+        <script>
+            function gtPlrFNme(plr) {
+                switch(plr) {
+                    case "p1":
+                        return "Player 1";
+                    case "p2":
+                        return "Player 2";
+                    case "p3":
+                        return "Player 3";
+                    case "p4":
+                        return "Player 4";
+                }
+            }
+            function gtPlrStle(plr) {
+                switch(plr) {
+                    case "p1":
+                        return "p1Coin";
+                    case "p2":
+                        return "p2Coin";
+                    case "p3":
+                        return "p3Coin";
+                    case "p4":
+                        return "p4Coin";
+                }
+            }
+            function gtCrnStle(i) {
+                switch(i) {
+                    case 0:
+                        return "crown1";
+                    case 1:
+                        return "crown2";
+                    case 2:
+                        return "crown3";
+                    case 3:
+                        return "crown4";
+                }
+            }
+            function fetchAndAddWinners() {
+                for(let i = 0;i < 4;i++) {
+                    let plr = localStorage.getItem("w"+(i+1));
+                    if(plr !== undefined && plr !== null) {
+                        let li = document.createElement("li");
+                        let spn = document.createElement("span");
+                        spn.id = "spn"
+                        let div = document.createElement("div");
+                        div.classList.toggle(gtPlrStle(plr));
+                        let h4 = document.createElement("h4");
+                        let crown = document.createElement("div");
+                        crown.id = "crown"
+                        crown.classList.toggle(gtCrnStle(i));
+                        h4.innerText = gtPlrFNme(plr);
+                        spn.appendChild(div);
+                        spn.appendChild(h4);
+                        spn.appendChild(crown);
+                        li.appendChild(spn);
+                        ulist.appendChild(li);
+                    }
+                }
+            }
+            const ulist = document.getElementById("list");
+            fetchAndAddWinners();
+            function restart() {
+                localStorage.clear();
+                window.location.href = "ludo.html";
+            }
+        </script>
+        <style>
+            /* global colors */
+            :root {
+                --primary-p1: #32a852;
+                --secondary-p1: #1c8538;
+                --primary-p2: #fafa0c;
+                --secondary-p2: #eded2f;
+                --primary-p3: #fc1f0f;
+                --secondary-p3: #de281b;
+                --primary-p4: #3880fc;
+                --secondary-p4: #596d91;
+            }
+            * {
+                padding: 0px;
+                margin: 0px;
+                font-family: monospace;
+            }
+            #spn {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            li {
+                padding: 5px;
+            }
+            article {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                background: linear-gradient(lightskyblue, steelblue);
+                box-shadow: 2px 2px 10px steelblue;
+            }
+            section {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid lightblue;
+            }
+            button {
+                padding: 0.5em;
+                background-color: transparent;
+                border: 1px solid lightgrey;
+                border-radius: 10px;
+                width: 130px;
+            }
+            button:hover {
+                background-color: gold;
+            }
+            h1 {
+                color: steelblue;
+            }
+            h1 > b:nth-child(1) {
+                color: var(--primary-p1);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p1));
+            }
+            h1 > b:nth-child(2) {
+                color: var(--primary-p2);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p2));
+            }
+            h1 > b:nth-child(3) {
+                color: var(--primary-p3);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p3));
+            }
+            h1 > b:nth-child(4) {
+                color: var(--primary-p4);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p4));
+            }
+            /* Styles for players */
+            div.p1Coin {
+                background-image: url("images/p1.png");
+                background-size: cover;
+                width: 20px;
+                height: 20px;
+                /*box-shadow: 1px 2px 6px lightgrey;*/
+                filter: drop-shadow(1px 1px 4px var(--secondary-p1));
+                z-index: 1;
+                grid-area: overlap-area;
+                align-self: center;
+                justify-content: center;
+            }
+            div.p2Coin {
+                background-image: url("images/p2.png");
+                background-size: cover;
+                width: 20px;
+                height: 20px;
+                /*box-shadow: 1px 2px 6px lightgrey;*/
+                filter: drop-shadow(1px 1px 4px var(--secondary-p2));
+                z-index: 1;
+                grid-area: overlap-area;
+            }
+            div.p3Coin {
+                background-image: url("images/p3.png");
+                background-size: cover;
+                width: 20px;
+                height: 20px;
+                /*box-shadow: 1px 2px 6px lightgrey;*/
+                filter: drop-shadow(1px 1px 4px var(--secondary-p3));
+                z-index: 1;
+                grid-area: overlap-area;
+            }
+            div.p4Coin {
+                background-image: url("images/p4.png");
+                background-size: cover;
+                width: 20px;
+                height: 20px;
+                /*box-shadow: 1px 2px 6px lightgrey;*/
+                filter: drop-shadow(1px 1px 4px var(--secondary-p4));
+                z-index: 1;
+                grid-area: overlap-area;
+            }
+            /* Styles for the crown */
+            #crown {
+                background-size: cover;
+                background-position: center;
+                filter: drop-shadow(2px 4px 6px lightgrey);
+                width: 20px;
+                height: 20px;
+            }
+            .crown1 {
+                background-image: url("images/crown1.png");
+            }
+            .crown2 {
+                background-image: url("images/crown2.png");
+            }
+            .crown3 {
+                background-image: url("images/crown3.png");
+            }
+            .crown4 {
+                background-image: url("images/crown4.png");
+            }
+
+        </style>
+    </body>
+</html>

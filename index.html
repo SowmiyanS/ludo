@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ludo Game</title>
+        <meta name="viewport" content="width=device-width initial-scale=1.0"/>
+    </head>
+    <body>
+        <article>
+            <section>
+                <h1>Welcome to <b>L</b><b>U</b><b>D</b><b>O</b>!</h1>
+                <a href="ludo.html">
+                    <button>Play And Pass</button>
+                </a>
+                <a href="ludo-multi.html">
+                    <button disabled>Multiplayer</button>
+                </a>
+            </section>
+        </article>
+        <style>
+            /* global colors */
+            :root {
+                --primary-p1: #32a852;
+                --secondary-p1: #1c8538;
+                --primary-p2: #fafa0c;
+                --secondary-p2: #eded2f;
+                --primary-p3: #fc1f0f;
+                --secondary-p3: #de281b;
+                --primary-p4: #3880fc;
+                --secondary-p4: #596d91;
+            }
+            * {
+                padding: 0px;
+                margin: 0px;
+                font-family: monospace;
+            }
+            article {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                background-color: white;
+                background: linear-gradient(lightskyblue, steelblue);
+                box-shadow: 2px 2px 10px steelblue;
+            }
+            section {
+                display: flex;
+                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid lightblue;
+            }
+            button {
+                padding: 0.5em;
+                background-color: transparent;
+                border: 1px solid lightgrey;
+                border-radius: 10px;
+                width: 130px;
+            }
+            button:hover {
+                background-color: gold;
+            }
+            h1 {
+                color: steelblue;
+            }
+            h1 > b:nth-child(1) {
+                color: var(--primary-p1);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p1));
+            }
+            h1 > b:nth-child(2) {
+                color: var(--primary-p2);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p2));
+            }
+            h1 > b:nth-child(3) {
+                color: var(--primary-p3);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p3));
+            }
+            h1 > b:nth-child(4) {
+                color: var(--primary-p4);
+                filter: drop-shadow(1px 1px 5px var(--secondary-p4));
+            }
+
+        </style>
+    </body>
+</html>
