@@ -1287,17 +1287,34 @@ function switchPlayer() {
     let cntDce = gtDce(cntPlrIdx);
     cntDce.classList.remove("hlgt");
     // find the next player
-    let nextPlrIdx = (cntPlrIdx + 1) % 4;
     let prevPlrIdx = cntPlrIdx;
     //console.log("setting current player to : ");
-    currentPlayer = players[nextPlrIdx];
+    reOrdered[prevPlrIdx] = "false";
+    reOrderCoins();
+
+    let nextPlrIdx;
+    let isNxtPlrWon = true;
+    while(!isAllWon() && !isNxtPlrWon) {
+        isNxtPlrWon = true;
+        nextPlrIdx = (cntPlrIdx + 1) % 4;
+        for(let i = 0;i < 4;i++) {
+            if(!win[nextPlrIdx][i]) {
+                isNxtPlrWon = false;
+                break;
+            }
+        }
+        if(!isNxtPlrWon) {
+            // we are good to switch to the next player
+            break;
+        }
+        // otherwise we need to find a next player that is not won!
+    }
     //console.dir(currentPlayer);
     cntPlrIdx = nextPlrIdx;
+    currentPlayer = players[nextPlrIdx];
     //console.log("Active Player changed to : "+(cntPlrIdx + 1));
     cntDce = gtDce(cntPlrIdx);
     // highlight the current dice
     cntDce.classList.toggle("hlgt");
     // Make the coins of the active player show above all other coins
-    reOrdered[prevPlrIdx] = "false";
-    reOrderCoins();
 }
